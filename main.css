@@ -14,10 +14,21 @@ ul{
 	text-align: center;
 }
 .listItem{
+  position: relative;
+  left:0px;
+  opacity:1;
   font-size: 1.5em;
   cursor: pointer;
   line-height: 2em;
   list-style: none;
+  transition: opacity, left;
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
+}
+
+.move{
+  opacity:0;
+  left:-50px;
 }
 
 .listItem:hover{

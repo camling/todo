@@ -120,8 +120,16 @@ function todoProgram()
     
     function triggerRemove()
     {
-       _this.remove(this.hold);
+       _this.playRemoveItem();
+       this.className = this.className + " move";
        
+       
+    }
+
+    function transitionRemove()
+    {
+      _this.remove(this.hold);
+
     }
     
     var listLength = this.todos.length;
@@ -132,6 +140,7 @@ function todoProgram()
         li.hold = i;
         li.className = "listItem";
         li.addEventListener("click",triggerRemove);
+        li.addEventListener("transitionend", transitionRemove, false);
         li.appendChild(text);
         list.appendChild(li);
       }
@@ -166,7 +175,7 @@ function todoProgram()
       this.clearList();
       this.createList();
       this.updateLocalStorage();
-      this.playRemoveItem();
+      
     }
   
     this.getAll = function()
