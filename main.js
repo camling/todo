@@ -73,6 +73,7 @@ function todoProgram()
   {
     if(this.inputData.value.length === 0)
       {
+        this.playError();
         return false;
       }
     else
@@ -84,14 +85,21 @@ function todoProgram()
 
   this.playNewItem = function()
   {
-    this.audioTag.src = "sounds/blip1.wav";
+    this.audioTag.src = "sounds/blip1.mp3";
     this.audioTag.play();
    
   }
 
   this.playRemoveItem = function()
   {
-    this.audioTag.src = "sounds/short_whoosh1.wav";
+    this.audioTag.src = "sounds/short_whoosh1.mp3";
+    this.audioTag.play();
+   
+  }
+
+  this.playError = function()
+  {
+    this.audioTag.src = "sounds/bass_deny.mp3";
     this.audioTag.play();
    
   }
