@@ -1,0 +1,26 @@
+*{box-sizing: border-box;}
+
+body{
+  background-color:#28152b;
+  color:#d43e73;
+  padding: 10px;
+}
+
+ul{
+	padding: 0px;
+}
+
+.container{
+	text-align: center;
+}
+.listItem{
+  font-size: 1.5em;
+  cursor: pointer;
+  line-height: 2em;
+  list-style: none;
+}
+
+.listItem:hover{
+  color:red;
+  text-decoration: line-through;
+}
