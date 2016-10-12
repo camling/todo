@@ -2,6 +2,7 @@ function todoProgram()
 {
   
   this.todos = [];
+  this.audioTag = document.getElementById("audio");
   this.list = document.getElementById("list");
   this.inputData = document.getElementById("inputData");
   this.inputButton = document.getElementById("inputButton");
@@ -31,7 +32,11 @@ function todoProgram()
     form.addEventListener("submit",function(e)
     {
       _this.clickedFunc(_this.inputData.value);
+      // stops form from submitting
+      e.preventDefault();
     });
+
+
 
   
   }
@@ -75,6 +80,21 @@ function todoProgram()
         return true;
       }
   }
+
+
+  this.playNewItem = function()
+  {
+    this.audioTag.src = "sounds/blip1.wav";
+    this.audioTag.play();
+   
+  }
+
+  this.playRemoveItem = function()
+  {
+    this.audioTag.src = "sounds/short_whoosh1.wav";
+    this.audioTag.play();
+   
+  }
   
   this.clearInputData = function()
   {
@@ -93,7 +113,7 @@ function todoProgram()
     function triggerRemove()
     {
        _this.remove(this.hold);
-       _this.updateLocalStorage();
+       
     }
     
     var listLength = this.todos.length;
@@ -120,6 +140,7 @@ function todoProgram()
           this.clearList();
           this.createList();
           this.updateLocalStorage();
+          this.playNewItem();
 
 
         }
@@ -136,6 +157,7 @@ function todoProgram()
       this.todos.splice(pos, 1);
       this.clearList();
       this.createList();
+      this.updateLocalStorage();
     }
   
     this.getAll = function()
