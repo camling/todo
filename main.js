@@ -158,6 +158,7 @@ function todoProgram()
       this.clearList();
       this.createList();
       this.updateLocalStorage();
+      this.playRemoveItem();
     }
   
     this.getAll = function()
