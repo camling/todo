@@ -2,6 +2,7 @@ function todoProgram()
 {
   
   this.todos = [];
+  this.completed = [];
   this.audioTag = document.getElementById("audio");
   this.list = document.getElementById("list");
   this.inputData = document.getElementById("inputData");
@@ -48,11 +49,15 @@ function todoProgram()
   		console.log("You have localStorage");
   		
 
-  		if(localStorage.getItem("toDoArray") && localStorage.getItem("toDoArray").length != 0)
+  		if(localStorage.getItem("toDoArray") && localStorage.getItem("toDoArray").length !== 0)
   		{
-			this.todos = localStorage.getItem("toDoArray").split(",");
-			this.createList();
+        this.todos = localStorage.getItem("toDoArray").split(",");
+  			this.createList();
   		}
+      if(localStorage.getItem("completedArray") && localStorage.getItem("completedArray").length !== 0)
+      {
+        this.completed = localStorage.getItem("completedArray").split(",");        
+      }
   		
   	}
   };
@@ -65,6 +70,7 @@ function todoProgram()
   	if (typeof(Storage) !== "undefined") 
   	{
   		localStorage.setItem("toDoArray", this.todos.toString());
+      localStorage.setItem("completedArray", this.completed.toString());
 	  }
 
   };
@@ -130,6 +136,7 @@ function todoProgram()
     {
       if(e.propertyName == 'left')
       {
+        _this.done(this.hold);
         _this.remove(this.hold);
       }
       
@@ -175,6 +182,11 @@ function todoProgram()
         }
      
     };
+
+    this.done = function(pos)
+    {
+      this.completed.push(this.todos[pos]); 
+    }
   
     this.add = function(x)
     {
