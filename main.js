@@ -130,7 +130,7 @@ function todoProgram()
     {
       if(e.propertyName == 'left')
       {
-        _this.remove(this.parentNode.hold);
+        _this.remove(this.hold);
       }
       
      
@@ -146,6 +146,7 @@ function todoProgram()
         var text = document.createTextNode(this.todos[i]);
 
         li.hold = i;
+        span.hold = i;
         li.className = "listItem";
         span.className = "close";
         span.addEventListener("click",triggerRemove);
