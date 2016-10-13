@@ -39,7 +39,7 @@ function todoProgram()
 
 
   
-  }
+  };
 
   this.checkLocalStorage = function()
   {
@@ -48,14 +48,14 @@ function todoProgram()
   		console.log("You have localStorage");
   		
 
-  		if(localStorage.getItem("toDoArray").length != 0)
+  		if(localStorage.getItem("toDoArray") && localStorage.getItem("toDoArray").length != 0)
   		{
 			this.todos = localStorage.getItem("toDoArray").split(",");
 			this.createList();
   		}
   		
   	}
-  }
+  };
 
 
   this.updateLocalStorage = function()
@@ -65,9 +65,9 @@ function todoProgram()
   	if (typeof(Storage) !== "undefined") 
   	{
   		localStorage.setItem("toDoArray", this.todos.toString());
-	}
+	  }
 
-  }
+  };
  
   this.checkInputData = function()
   {
@@ -80,7 +80,7 @@ function todoProgram()
       {
         return true;
       }
-  }
+  };
 
 
   this.playNewItem = function()
@@ -88,32 +88,32 @@ function todoProgram()
     this.audioTag.src = "sounds/blip1.mp3";
     this.audioTag.play();
    
-  }
+  };
 
   this.playRemoveItem = function()
   {
     this.audioTag.src = "sounds/short_whoosh1.mp3";
     this.audioTag.play();
    
-  }
+  };
 
   this.playError = function()
   {
     this.audioTag.src = "sounds/bass_deny.mp3";
     this.audioTag.play();
    
-  }
+  };
   
   this.clearInputData = function()
   {
     inputData.value = "";
-  }
+  };
   
   
   this.clearList = function()
   {
     this.list.innerHTML = "";
-  }
+  };
   
   this.createList = function()
   {
@@ -126,9 +126,14 @@ function todoProgram()
        
     }
 
-    function transitionRemove()
+    function transitionRemove(e)
     {
-      _this.remove(this.hold);
+      if(e.propertyName == 'left')
+      {
+        _this.remove(this.hold);
+      }
+      
+     
 
     }
     
@@ -140,11 +145,11 @@ function todoProgram()
         li.hold = i;
         li.className = "listItem";
         li.addEventListener("click",triggerRemove);
-        li.addEventListener("transitionend", transitionRemove, false);
+        li.addEventListener("transitionend", transitionRemove);
         li.appendChild(text);
         list.appendChild(li);
       }
-  }
+  };
   
   
       
@@ -162,12 +167,12 @@ function todoProgram()
 
         }
      
-    }
+    };
   
     this.add = function(x)
     {
       this.todos.push(x);      
-    }
+    };
   
     this.remove = function(pos)
     {
@@ -176,16 +181,17 @@ function todoProgram()
       this.createList();
       this.updateLocalStorage();
       
-    }
+    };
   
     this.getAll = function()
     {
       return this.todos;
-    }
+    };
+
     this.showAll = function()
     {
     console.log(this.getAll());
-    }
+    };
 
     this.init();
   
