@@ -27,9 +27,9 @@ ul{
 }
 
 .close{
-  height: 25px;
-  width:25px;
-  background-color:red;
+  height: 30px;
+  width:30px;
+  background-color:#d43e73;
   border-radius: 50%;
   line-height: 1em;
   margin-left: 25px;
