@@ -121,7 +121,7 @@ function todoProgram()
     function triggerRemove()
     {
        _this.playRemoveItem();
-       this.className = this.className + " move";
+       this.parentNode.className = this.parentNode.className + " move";
        
        
     }
@@ -130,7 +130,7 @@ function todoProgram()
     {
       if(e.propertyName == 'left')
       {
-        _this.remove(this.hold);
+        _this.remove(this.parentNode.hold);
       }
       
      
@@ -141,12 +141,18 @@ function todoProgram()
     for(var i = 0; i < listLength; i++)
       {
         var li = document.createElement("li");
+        var span = document.createElement("span");
+        var x = document.createTextNode("x");
         var text = document.createTextNode(this.todos[i]);
+
         li.hold = i;
         li.className = "listItem";
-        li.addEventListener("click",triggerRemove);
+        span.className = "close";
+        span.addEventListener("click",triggerRemove);
         li.addEventListener("transitionend", transitionRemove);
+        span.appendChild(x);
         li.appendChild(text);
+        li.appendChild(span);
         list.appendChild(li);
       }
   };
